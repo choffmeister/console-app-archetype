@@ -6,26 +6,26 @@ package ${package};
 import java.util.Arrays;
 
 import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
 /**
  * Application entry.
  */
-public class Application
-{
-    public static void main(String[] args)
-    {
+public class Application {
+    public static void main(final String[] args) {
         try {
             if (!CommandLineOptions.helpRequested(args)) {
                 Application app = new Application();
                 Config config = Config.load();
                 CommandLineOptions options = CommandLineOptions.parse(args);
-                int exitStatus = app.run(config, options);
+                int exitStatus = app.execute(config, options);
 
                 System.exit(exitStatus);
             } else {
                 HelpFormatter formatter = new HelpFormatter();
-                formatter.printHelp("${artifactId}", CommandLineOptions.createOptions(), true);
+                Options options = CommandLineOptions.createOptions();
+                formatter.printHelp("${artifactId}", options, true);
             }
         } catch (ParseException e) {
             System.err.println("Parsing failed. Reason: " + e.getMessage());
@@ -38,7 +38,7 @@ public class Application
         }
     }
 
-    public int run(Config config, CommandLineOptions options) {
+    public int execute(Config config, CommandLineOptions options) {
         System.out.println("Chief name: " + config.chiefName.toString());
         System.out.println("Chief age: " + config.chiefAge.toString());
         System.out.println("Chief married: " + config.chiefMarried.toString());
@@ -51,7 +51,6 @@ public class Application
 
             System.out.println(Arrays.toString(options.args));
         }
-
 
         return 0;
     }

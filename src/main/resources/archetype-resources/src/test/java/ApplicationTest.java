@@ -10,12 +10,12 @@ import static org.junit.Assert.*;
 public class ApplicationTest
 {
     @Test
-    public void testApp()
+    public void testExecution()
     {
         Application app = new Application();
         Config config = new Config("Frank", 42, false, new File("."));
         CommandLineOptions options = new CommandLineOptions(true, 1, new String[] { "hello", "world" });
-        int exitStatus = app.run(config, options);
+        int exitStatus = app.execute(config, options);
 
         assertEquals(0, exitStatus);
     }
