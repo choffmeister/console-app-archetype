@@ -16,3 +16,4 @@ mvn archetype:generate \
 cd applepie
 mvn package
 java -jar target/applepie-1.0-SNAPSHOT-app.jar -n=10 Hello World
+mvn site
