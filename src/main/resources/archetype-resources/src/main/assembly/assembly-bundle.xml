@@ -6,20 +6,14 @@
   <formats>
     <format>zip</format>
   </formats>
-  <fileSets>
-    <fileSet>
-      <directory>${symbol_dollar}{project.basedir}</directory>
+  <files>
+    <file>
+      <source>${symbol_dollar}{project.basedir}/README.md</source>
       <outputDirectory>/</outputDirectory>
-      <includes>
-        <include>README.md</include>
-      </includes>
-    </fileSet>
-    <fileSet>
-      <directory>${symbol_dollar}{project.build.directory}</directory>
+    </file>
+    <file>
+      <source>${symbol_dollar}{project.build.directory}/${artifactId}-${symbol_dollar}{project.version}-app.jar</source>
       <outputDirectory>/</outputDirectory>
-      <includes>
-        <include>${artifactId}-${symbol_dollar}{project.version}-app.jar</include>
-      </includes>
-    </fileSet>
-  </fileSets>
+    </file>
+  </files>
 </assembly>
