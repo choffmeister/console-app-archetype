@@ -18,8 +18,9 @@ public class Application
         try {
             if (!CommandLineOptions.helpRequested(args)) {
                 Application app = new Application();
+                Config config = Config.load();
                 CommandLineOptions options = CommandLineOptions.parse(args);
-                int exitStatus = app.run(options);
+                int exitStatus = app.run(config, options);
 
                 System.exit(exitStatus);
             } else {
@@ -37,7 +38,12 @@ public class Application
         }
     }
 
-    public int run(CommandLineOptions options) {
+    public int run(Config config, CommandLineOptions options) {
+        System.out.println("Chief name: " + config.chiefName.toString());
+        System.out.println("Chief age: " + config.chiefAge.toString());
+        System.out.println("Chief married: " + config.chiefMarried.toString());
+        System.out.println("Variables file: " + config.variables.toString());
+
         for (int i = 0; i < options.repetitions; i++) {
             if (options.verbose) {
                 System.out.println("Print the message:");

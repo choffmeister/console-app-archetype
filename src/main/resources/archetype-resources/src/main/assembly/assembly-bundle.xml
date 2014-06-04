@@ -15,5 +15,10 @@
       <source>${symbol_dollar}{project.build.directory}/${artifactId}-${symbol_dollar}{project.version}-app.jar</source>
       <outputDirectory>/</outputDirectory>
     </file>
+    <file>
+      <source>${symbol_dollar}{project.basedir}/src/main/resources/application.conf.dist</source>
+      <outputDirectory>/</outputDirectory>
+      <destName>application.conf</destName>
+    </file>
   </files>
 </assembly>

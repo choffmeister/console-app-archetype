@@ -6,11 +6,11 @@ package ${package};
 import org.apache.commons.cli.*;
 
 public class CommandLineOptions {
-    public final boolean verbose;
-    public final int repetitions;
+    public final Boolean verbose;
+    public final Integer repetitions;
     public final String[] args;
 
-    public CommandLineOptions(boolean verbose, int repetitions, String[] args) {
+    public CommandLineOptions(Boolean verbose, Integer repetitions, String[] args) {
         this.verbose = verbose;
         this.repetitions = repetitions;
         this.args = args;
