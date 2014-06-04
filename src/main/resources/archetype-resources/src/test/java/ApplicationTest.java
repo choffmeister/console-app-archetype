@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 public class ApplicationTest
 {
     @Test
-    public void testExecution()
+    public void testExecution() throws Exception
     {
         Application app = new Application();
         Config config = new Config("Frank", 42, false, new File("."));

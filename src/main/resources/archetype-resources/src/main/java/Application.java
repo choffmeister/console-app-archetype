@@ -31,14 +31,14 @@ public class Application {
             System.err.println("Parsing failed. Reason: " + e.getMessage());
 
             System.exit(1);
-        } catch (Throwable e) {
+        } catch (Exception e) {
             System.err.println(e.toString());
 
             System.exit(1);
         }
     }
 
-    public int execute(Config config, CommandLineOptions options) {
+    public int execute(Config config, CommandLineOptions options) throws Exception {
         System.out.println("Chief name: " + config.chiefName.toString());
         System.out.println("Chief age: " + config.chiefAge.toString());
         System.out.println("Chief married: " + config.chiefMarried.toString());
