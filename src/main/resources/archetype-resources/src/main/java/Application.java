@@ -8,32 +8,39 @@ import java.util.Arrays;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Application entry.
  */
 public class Application {
+    private final static Logger log = LoggerFactory.getLogger(Application.class);
+
     public static void main(final String[] args) {
         try {
+            log.info("Started application");
+
             if (!CommandLineOptions.helpRequested(args)) {
                 Application app = new Application();
                 Config config = Config.load();
                 CommandLineOptions options = CommandLineOptions.parse(args);
                 int exitStatus = app.execute(config, options);
 
+                log.info("Finished application successfully");
                 System.exit(exitStatus);
             } else {
                 HelpFormatter formatter = new HelpFormatter();
                 Options options = CommandLineOptions.createOptions();
                 formatter.printHelp("${artifactId}", options, true);
+
+                log.info("Finished application successfully");
             }
         } catch (ParseException e) {
-            System.err.println("Parsing failed. Reason: " + e.getMessage());
-
+            log.error("Aborted application because of invalid command line arguments - {}", e.getMessage());
             System.exit(1);
         } catch (Exception e) {
-            System.err.println(e.toString());
-
+            log.error("Application failed", e);
             System.exit(1);
         }
     }
